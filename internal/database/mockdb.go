@@ -37,6 +37,20 @@ var mockAccountDetails = map[string]AccountDetails{
     },
 }
 
+func (d *mockDB) InsertLoginDetails(username string, authToken string) *LoginDetails {
+    time.Sleep(time.Second * 1)
+    var clientData = LoginDetails{
+        AuthToken: authToken,
+        Username: username,
+    }
+    clientData, ok := mockLoginDetails[username]
+    if ok {
+        return nil
+    }
+    mockLoginDetails[username] = clientData
+    return &clientData
+}
+
 func (d *mockDB) GetLoginDetails(username string) *LoginDetails {
     time.Sleep(time.Second * 1)
 

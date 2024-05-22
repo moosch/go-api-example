@@ -9,15 +9,17 @@ The structure is very simple and should be easy to follow and build upon.
 ## Endpoints
 
 ```
-GET    /account?username=<username>
-POST   /account?username=<username>
-DELETE /account?username=<username>
-
 POST /account/login?username=<username>
 POST /account/logout
+
+
+GET    /account?username=<username>
+    Authorization: <authToken>
+
+POST   /account?username=<username>
+    Authorization: <authToken>
+
+DELETE /account?username=<username>
+    Authorization: <authToken>
 ```
-
-## Todo
-
-- [ ] If we update a username, we need to then also update the Auth Token DB record, and clear the cache entry.
 

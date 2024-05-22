@@ -43,3 +43,9 @@ func sendResponse[T interface{}](w http.ResponseWriter, response T) {
         api.InternalErrorHandler(w)
     }
 }
+
+func sendEmptyResponse(w http.ResponseWriter) {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusNoContent)
+}
+
